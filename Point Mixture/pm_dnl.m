@@ -1,0 +1,19 @@
+function [ df ] = pm_dnl( y , g , e)
+%DPM_NL the differential of the nonlinearity of the two point mixture
+%as given in the section 2.4 for the paper
+df = (exp(y*(-(e - 1)/e)^(1/2) + (g*(e - 1))/(2*e))*(e - 1) ...
+    - e*exp((e*g)/(2*(e - 1)) - y/(-(e - 1)/e)^(1/2)))./(exp((e*g)/(2*(e - 1))...
+    - y/(-(e - 1)/e)^(1/2))*(e - 1) - e*exp(y*(-(e - 1)/e)^(1/2)...
+    + (g*(e - 1))/(2*e))) - (e*exp(y*(-(e - 1)/e)^(1/2)...
+    + (g*(e - 1))/(2*e))*(-(e - 1)/e)^(1/2) + (exp((e*g)/(2*(e - 1))...
+    - y/(-(e - 1)/e)^(1/2))*(e - 1))/(-(e - 1)/e)^(1/2)).^2./(exp((e*g)/(2*e - 2)...
+    - y/(-(e - 1)/e)^(1/2))*(e - 1) - e*exp(y*(-(e - 1)/e)^(1/2) + (g*(e - 1))/(2*e))).^2;
+%For small values of e, df can sometimes be NaN however it is usually
+%obvious what the value of df should be in this case, the code below fixes
+%this
+j = 1:1:length(y);
+j = j(isnan(df));
+
+df(j) = 0;
+end
+

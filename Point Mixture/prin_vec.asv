@@ -1,0 +1,7 @@
+function [ v , lambda ] = prin_vec( A , k)
+%prin_vec - finds  eigenvector of a matrix
+[V,D] = eigs(A,k);
+lambda = D(1,1);
+v = V(:,1);
+end
+
