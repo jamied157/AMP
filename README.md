@@ -7,3 +7,5 @@ To most illustrative place to start is the point mixture folder, here I reconstr
 > Estimation of Low-Rank Matrices via Approximate Message Passing - https://arxiv.org/abs/1711.01682
 
 This example can be found in section 2.4 of the paper, it is instructive to make use of the function pm_plt_lambda and trying to use this to reconstruct the graphs in the paper before looking through the rest of the code. 
+
+A presentation for this project can be found in the Dougherty, Jamie pdf file
